@@ -196,7 +196,7 @@ export default function FaceColorRecommender() {
           </p>
         </motion.div>
 
-        <div className="w-full max-w-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl backdrop-blur-xl">
+        <div className="w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl backdrop-blur-xl">
           {!image && (
             <label className="block w-full cursor-pointer border-2 border-dashed border-gray-600 rounded-2xl p-10 text-center hover:border-white transition">
               <motion.div
@@ -218,7 +218,7 @@ export default function FaceColorRecommender() {
           )}
 
           {showCropper && image && (
-            <div className="relative w-full h-[400px] bg-black mb-6 rounded-xl overflow-hidden">
+            <div className="relative w-full h-[300px] bg-black mb-6 rounded-xl overflow-hidden">
               <Cropper
                 image={image}
                 crop={crop}
@@ -231,48 +231,53 @@ export default function FaceColorRecommender() {
                 onCropComplete={onCropComplete}
               />
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex gap-4">
-                <button
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full font-semibold shadow-md hover:opacity-90 transition-all"
-                  onClick={showCropped}
-                >
-                  Confirm Crop & Continue
-                </button>
+              <button
+  className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold shadow-md text-sm sm:text-base hover:opacity-90 transition-all"
+  onClick={showCropped}
+>
+  Confirm Crop & Continue
+</button>
+
               </div>
             </div>
           )}
 
           {croppedImage && (
             <>
-              <div className="flex flex-col sm:flex-row sm:gap-10 gap-6 items-center justify-center text-center mb-6">
-                <ColorSwatch
-                  label="Face"
-                  color={faceColor}
-                  icon={<User className="w-5 h-5" />}
-                  target="face"
-                />
-                <ColorSwatch
-                  label="Hair"
-                  color={hairColor}
-                  icon={<Scissors className="w-5 h-5" />}
-                  target="hair"
-                />
-                <ColorSwatch
-                  label="Eyes"
-                  color={eyeColor}
-                  icon={<Eye className="w-5 h-5" />}
-                  target="eyes"
-                />
-              </div>
+             <div className="flex flex-wrap justify-center gap-4 sm:gap-10 text-center mb-6">
+  <ColorSwatch
+    label="Face"
+    color={faceColor}
+    icon={<User className="w-4 h-4 sm:w-6 sm:h-6" />}
+    target="face"
+    className="w-16 h-16 sm:w-24 sm:h-24"
+  />
+  <ColorSwatch
+    label="Hair"
+    color={hairColor}
+    icon={<Scissors className="w-4 h-4 sm:w-6 sm:h-6" />}
+    target="hair"
+    className="w-16 h-16 sm:w-24 sm:h-24"
+  />
+  <ColorSwatch
+    label="Eyes"
+    color={eyeColor}
+    icon={<Eye className="w-4 h-4 sm:w-6 sm:h-6" />}
+    target="eyes"
+    className="w-16 h-16 sm:w-24 sm:h-24"
+  />
+</div>
+
               <p className="text-center text-sm text-gray-400 mb-4">
                 Click your image to pick colors
               </p>
               <div className="w-full mb-6">
-                <img
-                  src={croppedImage}
-                  alt="Cropped Preview"
-                  className="max-w-md w-full mx-auto rounded-xl shadow-md cursor-crosshair"
-                  onClick={handleClickImage}
-                />
+              <img
+  src={croppedImage}
+  alt="Cropped Preview"
+  className="w-64 sm:max-w-md sm:w-full mx-auto rounded-xl shadow-md cursor-crosshair"
+  onClick={handleClickImage}
+/>
               </div>
               <div className="flex justify-center gap-4 mb-6">
                 <motion.button
@@ -302,40 +307,49 @@ export default function FaceColorRecommender() {
               <p className="text-lg font-semibold mb-4 text-white">
                 Suggested Colors for Tone: {result?.tone || 'N/A'}
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {result.recommendedColors.map(({ color, name }) => (
-                  <div
-                    key={color}
-                    className="flex flex-col items-center rounded-xl bg-white/5 border border-white/10 shadow-md p-4 transition hover:scale-[1.02]"
-                  >
-                    <div className="relative w-full h-64 rounded-xl overflow-hidden border">
-                      <div className="absolute top-0 left-0 w-full h-1/2">
-                        <img
-                          src={croppedImage}
-                          alt="User Face Preview"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div
-                        className="absolute bottom-0 left-0 w-full h-1/2"
-                        style={{ backgroundColor: color }}
-                      ></div>
-                    </div>
-                    <button
-                      onClick={() => navigator.clipboard.writeText(color)}
-                      className="mt-3 text-sm text-blue-300 hover:underline"
-                    >
-                      {color} <Copy className="inline-block w-4 h-4 ml-1" />
-                    </button>
-                    <button
-                      onClick={() => navigator.clipboard.writeText(name)}
-                      className="mt-1 text-xs text-gray-400 hover:underline"
-                    >
-                      {name} <Copy className="inline-block w-4 h-4 ml-1" />
-                    </button>
-                  </div>
-                ))}
-              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+  {result.recommendedColors.map(({ color, name }) => (
+    <div
+      key={color}
+      className="flex flex-col items-center rounded-xl bg-white/5 border border-white/10 shadow-md p-4 transition hover:scale-[1.02]"
+    >
+      <div className="relative w-full h-48 sm:h-64 rounded-xl overflow-hidden border">
+        <div className="absolute top-0 left-0 w-full h-1/2">
+          <img
+            src={croppedImage}
+            alt="User Face Preview"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          className="absolute bottom-0 left-0 w-full h-1/2"
+          style={{ backgroundColor: color }}
+        ></div>
+      </div>
+      
+      <button
+        onClick={() => {
+          navigator.clipboard.writeText(color);
+          alert("Color copied: " + color);
+        }}
+        className="mt-3 text-sm text-blue-300 hover:underline cursor-pointer"
+      >
+        {color} <Copy className="inline-block w-4 h-4 ml-1" />
+      </button>
+
+      <button
+        onClick={() => {
+          navigator.clipboard.writeText(name);
+          alert("Name copied: " + name);
+        }}
+        className="mt-1 text-xs text-gray-400 hover:underline cursor-pointer"
+      >
+        {name} <Copy className="inline-block w-4 h-4 ml-1" />
+      </button>
+    </div>
+  ))}
+</div>
+
             </motion.div>
           )}
         </div>
