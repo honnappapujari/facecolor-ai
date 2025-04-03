@@ -196,7 +196,7 @@ export default function FaceColorRecommender() {
           </p>
         </motion.div>
 
-        <div className="w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-none border-none text-center rounded-3xl p-8 sm:p-6 sm:text-left shadow-2xl backdrop-blur-xl">
+        <div className="w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-none border-none text-center rounded-3xl p-2 sm:p-2 sm:text-left shadow-2xl backdrop-blur-xl">
           {!image && (
             <label className="block w-full cursor-pointer border-2 border-dashed border-gray-600 rounded-2xl p-10 text-center hover:border-white transition">
               <motion.div
