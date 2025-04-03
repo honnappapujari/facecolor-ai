@@ -354,6 +354,13 @@ export default function FaceColorRecommender() {
             </motion.div>
           )}
         </div>
+        <AdSenseAd />
+        <a href="https://myntr.it/ekMq20z" target="_blank" rel="noopener noreferrer">
+  <Button className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+    Shop Now & Earn Cashback
+  </Button>
+</a>
+
       </main>
 
       <footer className="text-center py-4 text-xs text-gray-500 bg-transparent border-t border-white/10 mt-12">
