@@ -196,7 +196,7 @@ export default function FaceColorRecommender() {
           </p>
         </motion.div>
 
-        <div className="w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl backdrop-blur-xl">
+        <div className="w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-none border-none text-center rounded-3xl p-8 sm:p-6 sm:text-left shadow-2xl backdrop-blur-xl">
           {!image && (
             <label className="block w-full cursor-pointer border-2 border-dashed border-gray-600 rounded-2xl p-10 text-center hover:border-white transition">
               <motion.div
@@ -275,9 +275,10 @@ export default function FaceColorRecommender() {
               <img
   src={croppedImage}
   alt="Cropped Preview"
-  className="w-64 sm:max-w-md sm:w-full mx-auto rounded-xl shadow-md cursor-crosshair"
+  className="w-64 h-48 sm:w-full sm:h-72 mx-auto rounded-xl shadow-md cursor-crosshair inline-block"
   onClick={handleClickImage}
 />
+
               </div>
               <div className="flex justify-center gap-4 mb-6">
                 <motion.button
@@ -302,12 +303,12 @@ export default function FaceColorRecommender() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="bg-white/10 p-4 rounded-xl w-full"
-            >
+              className="rounded-xl w-full sm:bg-white/10 sm:p-4"
+              >
               <p className="text-lg font-semibold mb-4 text-white">
                 Suggested Colors for Tone: {result?.tone || 'N/A'}
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-6">
   {result.recommendedColors.map(({ color, name }) => (
     <div
       key={color}
