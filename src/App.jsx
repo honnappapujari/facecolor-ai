@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import Cropper from 'react-easy-crop';
 import { motion } from 'framer-motion';
 import { UploadCloud, Copy, Eye, User, Scissors, RotateCw } from 'lucide-react';
-
 function getCroppedImg(imageSrc, croppedAreaPixels) {
   const canvas = document.createElement('canvas');
   const image = new Image();
@@ -348,21 +347,16 @@ export default function FaceColorRecommender() {
         {name} <Copy className="inline-block w-4 h-4 ml-1" />
       </button>
     </div>
+    
   ))}
 </div>
 
             </motion.div>
           )}
         </div>
-        <AdSenseAd />
-        <a href="https://myntr.it/ekMq20z" target="_blank" rel="noopener noreferrer">
-  <Button className="bg-blue-500 text-white px-4 py-2 rounded-lg">
-    Shop Now & Earn Cashback
-  </Button>
-</a>
 
       </main>
-
+      
       <footer className="text-center py-4 text-xs text-gray-500 bg-transparent border-t border-white/10 mt-12">
         © {new Date().getFullYear()} Pixora — Built with ♥ for
         fashion-forward recommendations
